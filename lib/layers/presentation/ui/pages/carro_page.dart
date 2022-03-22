@@ -1,23 +1,12 @@
-import 'package:arquitetura_limpa/layers/data/datasource/local/get_carros_por_cor_local_datasource_imp.dart';
-import 'package:arquitetura_limpa/layers/data/repositories/get_carros_por_cor_repository_imp_.dart';
-import 'package:arquitetura_limpa/layers/data/repositories/salvar_carro_favorito_repository_imp.dart';
-import 'package:arquitetura_limpa/layers/domain/usecases/get_carros_por_cor/get.carros.por.cor.usecase.imp.dart';
-import 'package:arquitetura_limpa/layers/domain/usecases/salvar_carro_favorito/salvar.carro.favorito.usecase.imp.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 import '../../controllers/carro_controller.dart';
 
 class CarroPage extends StatelessWidget {
   CarroPage({Key? key}) : super(key: key);
 
-  CarroController controller = CarroController(
-    GetCarrosPorCorUseCaseImp(GetCarrosPorCorRepositoryImp(
-      GetCarrosPorCorLocalDatasourceImp(),
-    )),
-    SalvarCarroFavoritoUsecaseImp(
-      SalvarCarroFavoritoRepositoryImp(),
-    ),
-  );
+  final controller = GetIt.I.get<CarroController>();
 
   @override
   Widget build(BuildContext context) {
